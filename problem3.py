@@ -40,8 +40,12 @@ def kth_missing(arr, k):
   #if the array is empty, the k-th missing number is just k itself
   if not arr:
     return k
-  
-
+  #helper function:
+  # how many numbers are missing?
+  # if there a no missing numbers, arr[i] should have been i+1
+  # so missing(i) = actual value - expected_value 
+  def missing(i):
+    return arr[i] -  (i + 1)
 
 
 
