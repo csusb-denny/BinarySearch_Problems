@@ -57,8 +57,25 @@ def kth_missing(arr, k):
     if missing(mid) >= k:
       r = mid
     #otherwise, its still too small -> go right
+    else:
+      l = mid + 1
+  #at the end of loop, l == r == idx where missing(idx) >= k 
+  idx = l
+  #if idx == 0, the kth missing number lies entirely before
+  #the first element. Since teh array starts at arr[0] >=2
+  #the k-th missing number is simply 'k'
+  if idx == 0:
+    return k
+  
+  #otherwise
+  #find how many numbers were missing before idx
+  prev_missing = missing(idx - 1)
 
+  #how many more numbers we need after arr[idx-1] to reach the k-th missing?
+  need = k - prev_missing
 
+  #final answer
+  return arr[idx - 1] + need
 
 
 print(kth_missing(arr, k))
