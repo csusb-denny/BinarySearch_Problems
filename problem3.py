@@ -36,6 +36,8 @@ target - tempval
 arr = [2,3,4,7,11]
 k = 5
 
+n = len(arr)
+
 def kth_missing(arr, k):
   #if the array is empty, the k-th missing number is just k itself
   if not arr:
@@ -47,7 +49,14 @@ def kth_missing(arr, k):
   def missing(i):
     return arr[i] -  (i + 1)
 
-
+  l, r = 0, n - 1
+  while l < r:
+    mid = (l + r) // 2
+    #if missing(mid) is already big enough (>= k)
+    #the k-th missing number is at or before mid
+    if missing(mid) >= k:
+      r = mid
+    #otherwise, its still too small -> go right
 
 
 
