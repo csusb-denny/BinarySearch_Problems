@@ -36,30 +36,16 @@ target - tempval
 arr = [2,3,4,7,11]
 k = 5
 
-n = len(arr)
-
-def kth_missing_term(arr, k):
-
-  n = len(arr)
-
-  def missing(i):                  #loop through, find the amount of positive integers were missing 
-    return arr[i] - (i + 1)
-  
-  if missing(n - 1) < k:           #if were at the last index, we dont have k missing numbers, then the answer lies after the array
-    return arr[-1] + (k - missing(n-1))
-
-  #find the smallest index where missing() > k (lower bound)
-  left = 0
-  right = n - 1
-
-  while left < right:
-    middle = (left + right) // 2
-
-    if missing(middle) >= k:
-      right = middle
-    else
-      left = middle + 1
-
+def kth_missing(arr, k):
+  #if the array is empty, the k-th missing number is just k itself
+  if not arr:
+    return k
   
 
 
+
+
+
+
+
+print(kth_missing(arr, k))
